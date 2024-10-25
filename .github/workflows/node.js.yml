@@ -32,6 +32,7 @@ jobs:
     - name: Replace Env Variables
       run: |
         sed -i "s/^REACT_APP_TEST_VAR=.*/REACT_APP_TEST_VAR=${{ secrets.REACT_APP_TEST_VAR }}/" .env
-        echo .env
+        cat .env
+        grep 'REACT_APP_TEST_VAR' .env
     - run: npm run build --if-present
     - run: npm test
